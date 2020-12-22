@@ -122,7 +122,7 @@ mix.options({
       {
         "optimizeForSpeed": true,
         "plugins": [
-          "styled-jsx-plugin-sass"
+          "@styled-jsx/plugin-sass"
         ]
       }
     ],

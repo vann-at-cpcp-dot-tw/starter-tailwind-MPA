@@ -4,6 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="stylesheet" href="dist/styles/index.css">
+  <link rel="stylesheet" href="dist/styles/tailwind_utilities.css">
   <title></title>
 
   <script>
