@@ -1,0 +1,61 @@
+.line-clamp
+    display: -webkit-box
+    -webkit-line-clamp: 1
+    -webkit-box-orient: vertical
+    text-overflow: ellipsis
+    overflow: hidden
+@for $i from 1 through 3
+    .line-clamp-#{$i}
+        display: -webkit-box
+        -webkit-line-clamp: $i
+        -webkit-box-orient: vertical
+        text-overflow: ellipsis
+        overflow: hidden
+@media (min-width: #{$bp-sm}px)
+    @for $i from 1 through 3
+        .sm\:line-clamp-#{$i}
+            display: -webkit-box
+            -webkit-line-clamp: $i
+            -webkit-box-orient: vertical
+            text-overflow: ellipsis
+            overflow: hidden
+@media (min-width: #{$bp-md}px)
+    @for $i from 1 through 3
+        .md\:line-clamp-#{$i}
+            display: -webkit-box
+            -webkit-line-clamp: $i
+            -webkit-box-orient: vertical
+            text-overflow: ellipsis
+            overflow: hidden
+@media (min-width: #{$bp-lg}px)
+    @for $i from 1 through 3
+        .lg\:line-clamp-#{$i}
+            display: -webkit-box
+            -webkit-line-clamp: $i
+            -webkit-box-orient: vertical
+            text-overflow: ellipsis
+            overflow: hidden
+@media (min-width: #{$bp-xl}px)
+    @for $i from 1 through 3
+        .xl\:line-clamp-#{$i}
+            display: -webkit-box
+            -webkit-line-clamp: $i
+            -webkit-box-orient: vertical
+            text-overflow: ellipsis
+            overflow: hidden
+@media (min-width: #{$bp-xxl}px)
+    @for $i from 1 through 3
+        .xxl\:line-clamp-#{$i}
+            display: -webkit-box
+            -webkit-line-clamp: $i
+            -webkit-box-orient: vertical
+            text-overflow: ellipsis
+            overflow: hidden
+@media (min-width: #{$bp-xxxl}px)
+    @for $i from 1 through 3
+        .xxxl\:line-clamp-#{$i}
+            display: -webkit-box
+            -webkit-line-clamp: $i
+            -webkit-box-orient: vertical
+            text-overflow: ellipsis
+            overflow: hidden

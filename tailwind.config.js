@@ -18,17 +18,31 @@ module.exports = {
   ],
   purge: process.env.NODE_ENV === 'production' ? purgecss :[],
   theme: {
-    container: {
-      center: true,
-    },
     screens: {
       'sm': '576px',
       'md': '768px',
       'lg': '992px',
       'xl': '1200px',
-      '2xl': '1400px',
-      // '3xl': '1600px',
-      // '4xl': '1920px',
+      'xxl': '1400px',
+      // 'xxxl': '1600px',
+      // 'xxxxl': '1920px',
+    },
+    container: {
+      center: true,
+    },
+    backgroundPosition: {
+      full: '100% 100%'
+    },
+    fontWeight: {
+      '100': '100',
+      '200': '200',
+      '300': '300',
+      '400': '400',
+      '500': '500',
+      '600': '600',
+      '700': '700',
+      '800': '800',
+      '900': '900',
     },
     extend: {
       spacing: {
@@ -48,7 +62,7 @@ module.exports = {
       //   '32px': '32px',
       // },
       // colors: {
-      //   gray: {
+      //   grey: {
       //     '100': '#d2d2d2',
       //     '300': '#888888',
       //     '500': '#444444',

@@ -1,16 +1,19 @@
-const mix = require('laravel-mix').setPublicPath('dist')
+const path = require('path');
+const mix = require('laravel-mix').setPublicPath('dist');
 const fs  = require('fs')
-const webpack = require('webpack')
-const TargetsPlugin = require('targets-webpack-plugin')
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
-const tailwindcss = require('tailwindcss')
-require('laravel-mix-polyfill')
 
 const getWebpackConfig = function(){
   let  commonConfig = {
     plugins: [
-      new HardSourceWebpackPlugin(),
     ],
+    optimization: {
+      providedExports: false,
+      sideEffects: false,
+      usedExports: false
+    },
+    output: {
+        chunkFilename: 'dist/chunks/[name].js',
+    },
     resolve: {
       alias: {
         src: path.resolve(__dirname, 'src'),
@@ -25,7 +28,6 @@ const getWebpackConfig = function(){
     case 'production':
       commonConfig.plugins = [
         ...commonConfig.plugins,
-        new TargetsPlugin({ browsers: ['last 2 versions', 'chrome >= 41', 'IE 11'] })
       ];
     break;
   }
@@ -45,6 +47,8 @@ getFiles('src/pages').forEach(function (path) {
   switch( path ){
     case ('.DS_Store'):
     return;
+    case ('sample.js'):
+    return
     default:
       mix.js('src/pages/'+path, 'dist/pages');
     break;
@@ -64,13 +68,12 @@ getFiles('src/styles').forEach(function (path) {
 })
 
 mix.js('src/main.js', 'dist') //webpack module 為倒敘法，所以 mix.js 同樣要採用倒敘法（會影響到 manifest 的 output 路徑）
-
+mix.vue({version: 2})
 mix.options({
-  // extractVueStyles: 'dist/styles/vue.css',
   clearConsole: process.env.NODE_ENV==='production' ?true :false,
   processCssUrls: false,
   postCss: [
-    tailwindcss('./tailwind.config.js'),
+    require("tailwindcss"),
     require('autoprefixer')({
       grid: true,
       overrideBrowserslist: [
@@ -83,27 +86,20 @@ mix.options({
     })
   ]
 })
-// .extract() //extract all
-.extract([
-  '@babel/polyfill',
-  'jquery',
-  'vue',
-  'vuex',
-  'react',
-  'react-dom',
-], 'dist/vendor.js')
+.extract() //extract all
+// .extract([
+//   '@babel/polyfill',
+//   'jquery',
+//   'vue',
+//   'vuex',
+//   'react',
+//   'react-dom',
+// ], 'dist/vendor.js')
 .autoload({
   jquery: ['$', 'window.jQuery', 'jQuery'],
   // vue: ['Vue', 'window.Vue'],
   react: ['React'],
   'react-dom': ['ReactDOM'],
-})
-.polyfill({
-  enabled: true,
-  useBuiltIns: "usage",
-  targets: {"ie": 11},
-  debug: true,
-  corejs: 3,
 })
 .webpackConfig(getWebpackConfig())
 .babelConfig({
@@ -126,28 +122,18 @@ mix.options({
         ]
       }
     ],
-    //babel plugin vue 和 react 無法同時混用
-    // "jsx-vue-functional",
-    // "@vue/babel-plugin-transform-vue-jsx",
-    // "@babel/plugin-syntax-dynamic-import"
+    "@babel/plugin-syntax-dynamic-import"
   ]
 })
 
-mix.browserSync({
-  proxy: 'localhost:8000',
-  port: '8001'
-})
+// mix.browserSync({
+//   proxy: 'localhost:8000',
+//   port: '8001'
+// })
 
 
 // if( mix.inProduction() ) {
 //     mix.version();
-//     mix.then(() => {
-//         const convertToFileHash = require("laravel-mix-make-file-hash");
-//         convertToFileHash({
-//             publicPath: "public",
-//             manifestFilePath: "public/mix-manifest.json"
-//         });
-//     });
 // }else{
 //     mix.sourceMaps();
 // }
