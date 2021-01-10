@@ -1,0 +1,53 @@
+/*!
+ * Bootstrap Grid v5.0.0-beta1 (https://getbootstrap.com/)
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+.container,
+.container-fluid,
+.xxl\:container,
+.xl\:container,
+.lg\:container,
+.md\:container-md,
+.sm\:container
+  width: 100%
+  padding-right: 20px
+  padding-left: 20px
+  margin-right: auto
+  margin-left: auto
+
+@media (min-width: 576px)
+  .sm\:container,
+  .container
+    max-width: 540px
+
+@media (min-width: 768px)
+  .md\:container,
+  .sm\:container,
+  .container
+    max-width: 720px
+
+@media (min-width: 992px) {
+  .lg\:container,
+  .md\:container,
+  .sm\:container,
+  .container
+    max-width: 960px
+
+@media (min-width: 1200px)
+  .xl\:container,
+  .lg\:container,
+  .md\:container,
+  .sm\:container,
+  .container
+    max-width: 1140px
+
+@media (min-width: 1400px)
+  .xxl\:container,
+  .xl\:container,
+  .lg\:container,
+  .md\:container,
+  .sm\:container,
+  .container
+    max-width: 1320px
