@@ -1,5 +1,5 @@
-const path = require('path');
-const mix = require('laravel-mix').setPublicPath('dist');
+const path = require('path')
+const mix = require('laravel-mix')
 const fs  = require('fs')
 
 const getWebpackConfig = function(){
@@ -102,6 +102,8 @@ mix.options({
   'react-dom': ['ReactDOM'],
 })
 .webpackConfig(getWebpackConfig())
+
+//React Version
 .babelConfig({
   presets: [
     "@babel/preset-react",
@@ -125,6 +127,12 @@ mix.options({
     "@babel/plugin-syntax-dynamic-import"
   ]
 })
+
+//Vue Version
+// .babelConfig({
+//   presets: ["@babel/preset-env"],
+//   plugins: ["@babel/plugin-syntax-dynamic-import"],
+// })
 
 // mix.browserSync({
 //   proxy: 'localhost:8000',

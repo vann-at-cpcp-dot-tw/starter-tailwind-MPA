@@ -1,32 +1,9 @@
 const ContextStore = React.createContext({
-  topFixedItems: {},
-  locale:{
-    "en":{
-      "name":"English",
-      "script":"Latn",
-      "native":"English",
-      "regional":"en_GB",
-      "dolorSign": "USD"
-    },
-    "vi":{
-      "name":"Vietnamese",
-      "script":"Latn",
-      "native":"Tiếng Việt",
-      "regional":"vi_VN",
-      "dolorSign": "VND"
-    },
-    "zh-TW":{
-      "name":"繁體中文",
-      "script":"Hant",
-      "native":"繁體中文",
-      "regional":"zh_TW",
-      "dolorSign": "TWD"
-    },
+  viewportData: {
+    width: 0,
+    height: 0,
   },
-  user: {
-    role: 'landlord',
-  },
-
+  lightbox: '',
 });
 
 export function contextReducer(state, action) {

@@ -3,6 +3,7 @@ const purgecss = [
   './**/*.php',
   './src/pages/*.js',
   './src/components/*.js',
+  './src/components/*.vue',
 ]
 
 module.exports = {
