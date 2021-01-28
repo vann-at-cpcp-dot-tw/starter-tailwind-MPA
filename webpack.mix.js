@@ -2,7 +2,7 @@ const path = require('path')
 const mix = require('laravel-mix')
 const fs  = require('fs')
 
-const getWebpackConfig = function(){
+const getWebpackConfig = function(mode){
   let  commonConfig = {
     plugins: [
     ],
@@ -33,7 +33,49 @@ const getWebpackConfig = function(){
   }
 
   return commonConfig;
-};
+}
+
+const babelConfig = {
+  react: {
+    presets: [
+      "@babel/preset-react",
+      [
+        "@babel/preset-env", {
+          "useBuiltIns": "usage",
+          "corejs": { "version": 3, "proposals": true }
+        },
+      ],
+    ],
+    plugins: [
+      [
+        "styled-jsx/babel",
+        {
+          "optimizeForSpeed": true,
+          "plugins": [
+            "@styled-jsx/plugin-sass"
+          ]
+        }
+      ],
+      "@babel/plugin-syntax-dynamic-import"
+    ]
+  },
+  vue: {
+    presets: ["@babel/preset-env"],
+    plugins: ["@babel/plugin-syntax-dynamic-import"],
+  }
+}
+
+const autoLoadConfig = {
+  react: {
+    jquery: ['$', 'window.jQuery', 'jQuery'],
+    react: ['React'],
+    'react-dom': ['ReactDOM'],
+  },
+  vue: {
+    jquery: ['$', 'window.jQuery', 'jQuery'],
+    vue: ['Vue', 'window.Vue'],
+  }
+}
 
 const getFiles = function (dir) {
   // get all 'files' in this directory
@@ -95,50 +137,14 @@ mix.options({
 //   'react',
 //   'react-dom',
 // ], 'dist/vendor.js')
-.autoload({
-  jquery: ['$', 'window.jQuery', 'jQuery'],
-  // vue: ['Vue', 'window.Vue'],
-  react: ['React'],
-  'react-dom': ['ReactDOM'],
-})
+.autoload(autoLoadConfig.react)
 .webpackConfig(getWebpackConfig())
-
-//React Version
-.babelConfig({
-  presets: [
-    "@babel/preset-react",
-    [
-      "@babel/preset-env", {
-        "useBuiltIns": "usage",
-        "corejs": { "version": 3, "proposals": true }
-      },
-    ],
-  ],
-  plugins: [
-    [
-      "styled-jsx/babel",
-      {
-        "optimizeForSpeed": true,
-        "plugins": [
-          "@styled-jsx/plugin-sass"
-        ]
-      }
-    ],
-    "@babel/plugin-syntax-dynamic-import"
-  ]
-})
-
-//Vue Version
-// .babelConfig({
-//   presets: ["@babel/preset-env"],
-//   plugins: ["@babel/plugin-syntax-dynamic-import"],
-// })
+.babelConfig(babelConfig.react)
 
 // mix.browserSync({
 //   proxy: 'localhost:8000',
 //   port: '8001'
 // })
-
 
 // if( mix.inProduction() ) {
 //     mix.version();

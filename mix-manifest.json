@@ -1,0 +1,8 @@
+{
+    "/dist/main.js": "/dist/main.js",
+    "/dist/manifest.js": "/dist/manifest.js",
+    "/dist/styles/tailwind-utilities.css": "/dist/styles/tailwind-utilities.css",
+    "/dist/styles/global.css": "/dist/styles/global.css",
+    "/dist/styles/custom.css": "/dist/styles/custom.css",
+    "/dist/vendor.js": "/dist/vendor.js"
+}
