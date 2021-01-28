@@ -1,20 +1,12 @@
 $pathAssets: '../../assets/'
 
-@import '_variables.sass'
+@import 'variables'
 @import 'utilities'
 
-//Tailwind
 /* purgecss start ignore */
 @tailwind base
 @tailwind components
 /* purgecss end ignore */
-
-
-
-
-.container
-  padding-left: 20px
-  padding-right: 20px
 
 *
   box-sizing: border-box
@@ -27,22 +19,38 @@ $pathAssets: '../../assets/'
 
 html,
 body
-    width: 100%
-    height: 100%
-    padding: 0px
-    margin: 0px
-    // font-family: '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', 'Microsoft JhengHei', '微軟正黑體', sans-serif
-    font-family: source-han-sans-traditional, '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', 'Microsoft JhengHei', '微軟正黑體', sans-serif
-    font-size: 16px
-    font-weight: 400
-    // Adobe source-han-sans-traditional Font Weight Setting
-    // ExtraLight 100
-    // Light 200
-    // Normal 300
-    // Regular 400
-    // Medium 500
-    // Bold 700
-    // Heavy 900
+  width: 100%
+  height: 100%
+  padding: 0px
+  margin: 0px
+  // font-family: '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', 'Microsoft JhengHei', '微軟正黑體', sans-serif
+  font-family: source-han-sans-traditional, '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', 'Microsoft JhengHei', '微軟正黑體', sans-serif
+  font-size: 16px
+  font-weight: 400
+  // Adobe source-han-sans-traditional Font Weight Setting
+  // ExtraLight 100
+  // Light 200
+  // Normal 300
+  // Regular 400
+  // Medium 500
+  // Bold 700
+  // Heavy 900
+
+body
+  &.lb-open
+    overflow: hidden
+
+#root
+  position: relative
+  width: 100%
+  height: 100%
+
+main
+  position: relative
+
+.sticky
+  position: relative
+  position: sticky
 
 a
   color: inherit
@@ -74,13 +82,12 @@ img
   display: flex
   justify-content: center
   align-items: flex-start
-  background-color: rgba(7,4,38,0.8)
+  background-color: rgba(25,25,25,0.8)
   overflow: auto
-  padding: 20px
-  padding-right: 52px
-  padding-top: 52px
-  display: none
-  >.content
+  padding: 30px 20px
+  >.inner
+    width: 100%
+    max-width: 680px
     margin-top: auto
     margin-bottom: auto
     position: relative
@@ -93,6 +100,10 @@ img
 .btn
   cursor: pointer
   transition: all .2s
+  &-bg-secondary
+    @apply bg-secondary-500
+    &:hover
+      @apply bg-main-500 text-white
   &-dark
     &:hover
       filter: brightness(0.8)
@@ -101,7 +112,7 @@ img
       filter: brightness(1.2)
   &-scaleUp
     &:hover
-      transform: scale(1.05)
+      transform: scale(1.1)
   &-scaleDown
     &:hover
       transform: scale(0.9)
@@ -114,7 +125,14 @@ img
   &-opacity
     &:hover
       opacity: 0.8
-
+  &-inside-brightest
+    &:hover
+      >*
+        filter: brightness(100)
+  &-inside-darkest
+    &:hover
+      >*
+        filter: brightness(-100)
 .btn-audio
   position: relative
   img
@@ -125,3 +143,18 @@ img
   &.off
     img.off
       display: block
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="numbr"],
+input[type="search"]
+  display: block
+  border-radius: 0px
+  padding-left: 10px
+  width: 100%
+  height: 36px
+  &.size-2
+    height: 44px
+
+@import 'custom'

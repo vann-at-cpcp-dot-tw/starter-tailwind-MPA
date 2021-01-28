@@ -3,7 +3,7 @@
   <!-- <meta name="viewport" http-equiv="Content-Type" content="width=750, shrink-to-fit=no, user-scalable=no"/> -->
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <link rel="stylesheet" href="dist/styles/index.css">
+  <link rel="stylesheet" href="dist/styles/global.css">
   <link rel="stylesheet" href="dist/styles/tailwind-utilities.css">
   <title></title>
 
